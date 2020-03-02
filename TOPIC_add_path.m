@@ -6,6 +6,7 @@ if ~strcmp(cur(end-10:end),'PROSIMFROST')
     error('Program must run from root folder /PROSIMFROST folder.') 
 end
 
+
 % Add system related functions paths
 cur = fileparts(mfilename('fullpath'));
 
