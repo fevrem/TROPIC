@@ -1,50 +1,36 @@
 function TOPIC_add_path()
+% TOPIC_add_path: add required path to CasADi
+%   - must run this from /TOPIC root at least once
+%   - configured for CasADi v3.5.1 (released October 2019) 
 
-% make sure it's running from root
-cur = pwd;
-if ~strcmp(cur(end-10:end),'PROSIMFROST')
-    error('Program must run from root folder /PROSIMFROST folder.') 
+
+
+% make sure it's running from root (/TOPIC)
+cur = fullfile(pwd);
+
+% available on Mac, Linux, and Windows
+if ismac
+    % Code to run on Mac platform
+    addpath(fullfile(cur, 'casadi', 'casadi-osx-matlabR2015a-v3.5.1'));
+    
+elseif isunix
+    % Code to run on Linux platform
+    addpath(fullfile(cur, 'casadi', 'casadi-linux-matlabR2014b-v3.5.1'));
+    
+elseif ispc
+    % Code to run on Windows platform
+    addpath(fullfile(cur, 'casadi', 'casadi-windows-matlabR2016a-v3'));
+    
+else
+    error('Platform not supported');
+    
 end
+import casadi.*
 
+% add spatial vector algebra suite
+addpath(fullfile(cur, 'dynamics', 'spatial_v2'));
 
-% Add system related functions paths
-cur = fileparts(mfilename('fullpath'));
-
-if isempty(cur)
-    cur = pwd;
-end
-
-warning('off', 'MATLAB:rmpath:DirNotFound')
-rmpath(genpath(cur))
-warning('on', 'MATLAB:rmpath:DirNotFound')
-
-
-addpath(cur)
-addpath(genpath(fullfile(cur, 'Spatial_v2')))
-
-os_status = determine_os;
-
-if nargin == 1
-    Sim_or_Opt = varargin{1};
-    if strcmpi(Sim_or_Opt,'casadi')
-        if strcmp(os_status,'osx')
-            addpath(fullfile(cur, 'casadi-osx-matlabR2015a-v3.4.5'));
-            addpath(genpath([cur filesep 'casadi-osx-matlabR2015a-v3.4.5']))
-        elseif strcmp(os_status,'lin')
-            addpath(fullfile(cur, 'casadi-linux-matlabR2014b-v3.4.4'));
-            addpath(genpath([cur filesep 'casadi-linux-matlabR2014b-v3.4.4']))
-        elseif strcmp(os_status,'win')
-            error('CasADi is not available for Windows machine.')
-        else
-            error('Platform not supported')
-        end
-        % CasADi 3.4.5
-        import casadi.*
-    end        
-end
-
-
-% make sure the machine has a valid C compiler setup
+% make sure the machine is set up with valid C compiler
 mex -setup C
 
 
