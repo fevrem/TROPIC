@@ -75,7 +75,6 @@ robot.appearance.body{3} = Anim.add_appearance('slender-rod', body_appearance, [
 
 
 
-
 % qj2
 clear body_appearance 
 robot.parent(4) = 3;    
@@ -100,7 +99,7 @@ clear body_appearance joint_appearance
 robot.parent(5) = 4;  
 robot.body_axis{5} = [0 0 -1];
 robot.body_length{5} = model_prms.L_lower_leg;
-robot.Xtree{5} = plux(eye(3), model_prms.L_upper_leg*robot.body_axis{5});
+robot.Xtree{5} = plux(eye(3), model_prms.L_upper_leg*robot.body_axis{4});
 robot.jtype{5}  = 'Ry';
 robot.I{5} = mcI(model_prms.M_lower_leg, model_prms.Lcom_lower_leg*robot.body_axis{5}, diag(1/12*model_prms.M_lower_leg*model_prms.L_lower_leg^2*[-1 -1 0]));
 body_appearance{1}.length = model_prms.L_lower_leg;
@@ -141,7 +140,7 @@ clear body_appearance joint_appearance
 robot.parent(7) = 6;  
 robot.body_axis{7} = [0 0 -1];
 robot.body_length{7} = model_prms.L_lower_leg;
-robot.Xtree{7} = plux(eye(3), model_prms.L_upper_leg*robot.body_axis{7});
+robot.Xtree{7} = plux(eye(3), model_prms.L_upper_leg*robot.body_axis{6});
 robot.jtype{7}  = 'Ry';
 robot.I{7} = mcI(model_prms.M_lower_leg, model_prms.Lcom_lower_leg*robot.body_axis{7}, diag(1/12*model_prms.M_lower_leg*model_prms.L_lower_leg^2*[-1 -1 0]));
 body_appearance{1}.length = model_prms.L_lower_leg;
