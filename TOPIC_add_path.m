@@ -4,7 +4,6 @@ function TOPIC_add_path()
 %   - configured for CasADi v3.5.1 (released October 2019) 
 
 
-
 % make sure it's running from root (/TOPIC)
 cur = fullfile(pwd);
 addpath(fullfile(cur));
@@ -28,19 +27,13 @@ else
 end
 import casadi.*
 
-% add path to a few helper functions
-%addpath(fullfile(cur, 'helpers'));
-
-% add path to animation and plotting functions
-%addpath(fullfile(cur, '+Anim'));
-
 % required functions
 addpath(fullfile(cur, 'dynamics'));
 
 % add spatial vector algebra suite
 addpath(fullfile(cur, 'dynamics', 'spatial_v2'));
 
-% add path to a few helper functions
+% add path to optimization functions
 addpath(fullfile(cur, 'optimization'));
 
 % make sure the machine is set up with valid C compiler
