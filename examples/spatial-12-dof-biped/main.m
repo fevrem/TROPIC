@@ -1,16 +1,11 @@
-clear all; clc; close all;
-
-rmpath(genpath(pwd))
-
-
-TOPIC_add_path
-
-
-cd('examples/spatial-12-dof-biped')
+%clear all; clc; close all;
+%rmpath(genpath(pwd))
+%TOPIC_add_path
+%cd('examples/spatial-12-dof-biped')
 
 % LOAD DYNAMICAL SYSTEM
 
-%clear all; clc; close all;
+clear all; clc; close all;
 
 [rbm] = ld_model(...
     {'model',@Model.spatial_12_dof_biped},...
