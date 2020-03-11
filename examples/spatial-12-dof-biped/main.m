@@ -4,12 +4,8 @@ clear all; clc; close all;
 rmpath(genpath(pwd))
 
 
-
-%%
-
 TOPIC_add_path
 
-%%
 
 cd('examples/spatial-12-dof-biped')
 
