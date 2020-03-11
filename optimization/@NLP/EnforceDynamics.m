@@ -32,7 +32,7 @@ for idx = 1:nlp.Settings.ncp
     
     
     if nContact ~= 0
-        nlp = add_constraint(nlp, nlp.Functions.ConstrainedDynamicsODE(vars_cp{:}), -nlp.Settings.ConstraintTolerance*ones(NH,1), nlp.Settings.ConstraintTolerance*ones(NH,1), 'dynamics (HC)');     
+        nlp = AddConstraint(nlp, nlp.Functions.ConstrainedDynamicsODE(vars_cp{:}), -nlp.Settings.ConstraintTolerance*ones(NH,1), nlp.Settings.ConstraintTolerance*ones(NH,1), 'dynamics (HC)');
     end    
     
     
@@ -48,25 +48,10 @@ for idx = 1:nlp.Settings.ncp
     
 
     % enforce equations of motion implicitly
-    nlp = add_constraint(nlp, nlp.Functions.DynamicsODE(vars_cp{:}), -nlp.Settings.ConstraintTolerance*ones(NB,1), nlp.Settings.ConstraintTolerance*ones(NB,1), 'dynamics (EOM)');     
-
-    
-
+    nlp = AddConstraint(nlp, nlp.Functions.DynamicsODE(vars_cp{:}), -nlp.Settings.ConstraintTolerance*ones(NB,1), nlp.Settings.ConstraintTolerance*ones(NB,1), 'dynamics (EOM)');     
 
 
 end
-
-
-
-
-% 
-% [obj, Fc] = add_contact_force(obj, rbm, idxArg);
-% 
-% % enforce friction constraints  
-% [obj] = enforce_friction(obj, rbm, Fc );        
-
-
-
 
 
 

@@ -6,7 +6,6 @@ arguments
     nlp (1,1) NLP
     rbm (1,1) DynamicalSystem
     grid_var (1,1) struct
-    %T (1,:) char {mustBeMember(T, {'t_minus','t_plus'})}
 end
 
 
@@ -24,13 +23,13 @@ if nlp.Problem.GroundClearance.Bool
                 mustBeGreaterThan(idx_cp,1)
                 mustBeLessThan(idx_cp,nlp.Settings.ncp)
 
-                [nlp] = add_constraint(nlp, nlp.Problem.SwingFootHeight.Function(grid_var.(['pos_', num2str(idx_cp)])), nlp.Problem.SwingFootHeight.LowerBound, nlp.Problem.SwingFootHeight.UpperBound, [nlp.Problem.SwingFootHeight.Name, '@', num2str(idx_cp)]);
+                [nlp] = AddConstraint(nlp, nlp.Problem.SwingFootHeight.Function(grid_var.(['pos_', num2str(idx_cp)])), nlp.Problem.SwingFootHeight.LowerBound, nlp.Problem.SwingFootHeight.UpperBound, [nlp.Problem.SwingFootHeight.Name, '@', num2str(idx_cp)]);
                 continue; % do not enforce redundant constraints
             end
 
         end
 
-        [nlp] = add_constraint(nlp, nlp.Problem.GroundClearance.Function(grid_var.(['pos_', num2str(i)])), nlp.Problem.GroundClearance.LowerBound, nlp.Problem.GroundClearance.UpperBound, [nlp.Problem.GroundClearance.Name, '@', num2str(i)]);
+        [nlp] = AddConstraint(nlp, nlp.Problem.GroundClearance.Function(grid_var.(['pos_', num2str(i)])), nlp.Problem.GroundClearance.LowerBound, nlp.Problem.GroundClearance.UpperBound, [nlp.Problem.GroundClearance.Name, '@', num2str(i)]);
 
     end
 
@@ -44,7 +43,7 @@ else
         mustBeGreaterThan(idx_cp,1)
         mustBeLessThan(idx_cp,nlp.Settings.ncp)
 
-        [nlp] = add_constraint(nlp, nlp.Problem.SwingFootHeight.Function(grid_var.(['pos_', num2str(idx_cp)])), nlp.Problem.SwingFootHeight.LowerBound, nlp.Problem.SwingFootHeight.UpperBound, [nlp.Problem.SwingFootHeight.Name, '@', num2str(idx_cp)]);
+        [nlp] = AddConstraint(nlp, nlp.Problem.SwingFootHeight.Function(grid_var.(['pos_', num2str(idx_cp)])), nlp.Problem.SwingFootHeight.LowerBound, nlp.Problem.SwingFootHeight.UpperBound, [nlp.Problem.SwingFootHeight.Name, '@', num2str(idx_cp)]);
 
     end
 

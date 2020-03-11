@@ -1,5 +1,4 @@
-%function [symExpr, depVariables, symFun, conLB, conUB] = EnforceFriction(rbm, contactDyn)
-function nlp = EnforceFriction(nlp, rbm, Con, Fc)%, contactDyn)
+function nlp = EnforceFriction(nlp, rbm, Con, Fc)
 
 arguments
     nlp (1,1) NLP
@@ -9,7 +8,6 @@ arguments
 end
 
 
-%import casadi.*
 
 mustBeMember(Con.Friction.Type, {'Pyramid', 'Cone'})
 
@@ -18,7 +16,7 @@ validateForceNum(rbm, Con.ContactType, Fc)
 mu = Con.Friction.mu;
 mustBeNonnegative(mu)
 
-%Fc_i = rbm.Contacts{i}.Fc.sym;
+
 
 switch Con.Friction.Type
     case 'Cone'
@@ -27,15 +25,15 @@ switch Con.Friction.Type
                 
                 switch rbm.Model.dimensions
                     case 'planar'                                     
-                        nlp = add_constraint(nlp, Fc(1) - mu*Fc(2), -Inf, 0 ,'friction');
-                        nlp = add_constraint(nlp, -Fc(1) - mu*Fc(2), -Inf, 0 ,'friction');
+                        nlp = AddConstraint(nlp, Fc(1) - mu*Fc(2), -Inf, 0 ,'friction');
+                        nlp = AddConstraint(nlp, -Fc(1) - mu*Fc(2), -Inf, 0 ,'friction');
 
-                        nlp = add_constraint(nlp, Fc(2), 0, Inf, 'Normal force');
+                        nlp = AddConstraint(nlp, Fc(2), 0, Inf, 'Normal force');
                  
                     case 'spatial'
-                        nlp = add_constraint(nlp, norm_2([Fc(1); Fc(2)]) - mu*Fc(3), -Inf, 0, 'Friction cone');  
+                        nlp = AddConstraint(nlp, norm_2([Fc(1); Fc(2)]) - mu*Fc(3), -Inf, 0, 'Friction cone');
                         
-                        nlp = add_constraint(nlp, Fc(3), 0, Inf, 'Normal force');
+                        nlp = AddConstraint(nlp, Fc(3), 0, Inf, 'Normal force');
                 end
                 
                 
@@ -56,10 +54,10 @@ switch Con.Friction.Type
 
                 switch rbm.Model.dimensions
                     case 'planar'                                     
-                        nlp = add_constraint(nlp, Fc(1) - mu*Fc(2), -Inf, 0 ,'friction');
-                        nlp = add_constraint(nlp, -Fc(1) - mu*Fc(2), -Inf, 0 ,'friction');
+                        nlp = AddConstraint(nlp, Fc(1) - mu*Fc(2), -Inf, 0 ,'friction');
+                        nlp = AddConstraint(nlp, -Fc(1) - mu*Fc(2), -Inf, 0 ,'friction');
 
-                        nlp = add_constraint(nlp, Fc(2), 0, Inf, 'Normal force');
+                        nlp = AddConstraint(nlp, Fc(2), 0, Inf, 'Normal force');
 
                     case 'spatial'
                         
@@ -69,9 +67,9 @@ switch Con.Friction.Type
                             Fc(2) - 1/sqrt(2)*mu*Fc(3);
                             -Fc(2) - 1/sqrt(2)*mu*Fc(3)];
 
-                        nlp = add_constraint(nlp, sym_con, -Inf*ones(4,1), zeros(4,1), 'Friction pyramid');     
+                        nlp = AddConstraint(nlp, sym_con, -Inf*ones(4,1), zeros(4,1), 'Friction pyramid');
                 
-                    nlp = add_constraint(nlp, Fc(3), 0, Inf, 'Normal force');
+                    nlp = AddConstraint(nlp, Fc(3), 0, Inf, 'Normal force');
 
                 end
                 
@@ -84,104 +82,6 @@ switch Con.Friction.Type
         end
         
 end
-
-
-
-
-
-
-% switch nlp.Problem.contact.type
-%     case 'FxFz' %'planarWithFriction'
-% 
-%         
-% 
-%         nlp = add_constraint( nlp , Fc(2) , nlp.Problem.contact.forces.min_normal_force , Inf , 'normal force');
-% 
-%         if nlp.Problem.contact.friction.bool
-%             
-%             mu = nlp.Problem.contact.friction.mu;
-%             
-%             nlp = add_constraint( nlp , Fc(1) - mu*Fc(2) , -Inf , 0 ,'friction');
-%             nlp = add_constraint( nlp , -Fc(1) - mu*Fc(2) , -Inf , 0 ,'friction');
-%         end
-% 
-%     case 'FxFyFzMz' %'spatialWithFriction'
-%         
-%         
-%         
-%         nlp = add_constraint( nlp , Fc(3) , nlp.Problem.contact.forces.min_normal_force , Inf , 'normal force');
-% 
-%         if nlp.Problem.contact.friction.bool
-%             
-%             mu = nlp.Problem.contact.friction.mu;
-% 
-%             switch nlp.Problem.contact.friction.type
-%                 case 'pyramid'
-% 
-%                     nlp = add_constraint( nlp , Fc(1) - 1/sqrt(2)*mu*Fc(3) , -Inf , 0 ,'friction');
-%                     nlp = add_constraint( nlp , -Fc(1) - 1/sqrt(2)*mu*Fc(3) , -Inf , 0 ,'friction');
-%                     nlp = add_constraint( nlp , Fc(2) - 1/sqrt(2)*mu*Fc(3) , -Inf , 0 ,'friction');
-%                     nlp = add_constraint( nlp , -Fc(2) - 1/sqrt(2)*mu*Fc(3) , -Inf , 0 ,'friction');
-% 
-%                 case 'cone'
-%                     nlp = add_constraint( nlp , norm_2( [ Fc(1) ; Fc(2) ] ) - mu*Fc(3) , -Inf, 0); % casadi.norm_2 is norm() for class(var) casadi.MX 
-%             end
-%             
-%         end
-% 
-%         
-%         %nlp = add_constraint( nlp , Fc(4) , nlp.Problem.contact.forces.min_normal_force , Inf , 'normal force');
-% 
-%         nlp = add_constraint( nlp , Fc(4) , -nlp.Problem.contact.moments.max_normal_moment, nlp.Problem.contact.moments.max_normal_moment, 'normal moment');
-% 
-%         %error('how about F3')
-%  
-% 
-% 
-%     otherwise
-%         error('need to introduce these other cases')
-% 
-% end
-% 
-%     
-%     %{ 
-%     switch rbm.dimensions
-% 
-%         case '2D'
-% 
-%             nlp = add_constraint( nlp , Fc(2) , 10 , 1000 , 'friction');
-%             %warning('remove this??')
-%             %warning('remove this??')
-%             
-%             nlp = add_constraint( nlp , Fc(1) - mu*Fc(2) , -Inf , 0 ,'friction');
-%             nlp = add_constraint( nlp , -Fc(1) - mu*Fc(2) , -Inf , 0 ,'friction');
-% 
-% 
-%         case '3D'
-% 
-%             error('how about F3')
-%             switch nlp.Problem.friction.type
-%                 case 'pyramid'
-%                     nlp = add_constraint( nlp , Fc(1) - 1/sqrt(2)*mu*Fc(3) , -Inf , 0 );
-%                     nlp = add_constraint( nlp , -Fc(1) - 1/sqrt(2)*mu*Fc(3) , -Inf , 0 );
-%                     nlp = add_constraint( nlp , Fc(2) - 1/sqrt(2)*mu*Fc(3) , -Inf , 0 );
-%                     nlp = add_constraint( nlp , -Fc(2) - 1/sqrt(2)*mu*Fc(3) , -Inf , 0 );
-%                 case 'cone'
-%                     nlp = add_constraint( nlp , norm_2( [ Fc(1) ; Fc(2) ] ) - mu*Fc(3) , -Inf, 0); % casadi.norm_2 is norm() for class(var) casadi.MX 
-%             end
-% 
-%     end
-%     
-%     
-%     %}
-%     
-%     
-%     
-% %end
-% 
-% 
-
-
 
 
 

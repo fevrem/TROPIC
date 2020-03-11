@@ -1,4 +1,4 @@
-function [obj] = add_constraint(obj, constr, lb, ub, varargin)
+function [obj] = AddConstraint(obj, constr, lb, ub, varargin)
 
 if nargin == 5
     cstr_name = varargin{1};

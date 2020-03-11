@@ -26,7 +26,7 @@ if nlp.Problem.Trajectory.Bool
 
             n_coeff = numel(nlp.Problem.Trajectory.PolyCoeff.sym);
 
-            [nlp, a] = add_var(nlp, 'a_', n_coeff, reshape(a_guess, n_coeff, 1), reshape(a_lb, n_coeff, 1), reshape(a_ub, n_coeff, 1), 'a');
+            [nlp, a] = AddVar(nlp, 'a_', n_coeff, reshape(a_guess, n_coeff, 1), reshape(a_lb, n_coeff, 1), reshape(a_ub, n_coeff, 1), 'a');
             grid_var.a = a;
 
 

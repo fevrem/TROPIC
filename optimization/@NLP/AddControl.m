@@ -18,7 +18,7 @@ for idx = 1:nlp.Settings.ncp
     u_lb = rbm.Inputs.u.LowerBound(:, idx);
     u_guess = rbm.Inputs.u.Seed(:, idx);
     
-    [nlp, u_idx] = add_var(nlp, ['U_', num2str(idx)], NU, u_guess, u_lb, u_ub, 'input');
+    [nlp, u_idx] = AddVar(nlp, ['U_', num2str(idx)], NU, u_guess, u_lb, u_ub, 'input');
     grid_var.(['input_', num2str(idx)]) = u_idx;
 
 end
@@ -33,7 +33,7 @@ if nlp.Problem.SlewRate.Bool
         du_lb = rbm.Inputs.du.LowerBound(:, idx);
         du_guess = rbm.Inputs.du.Seed(:, idx);
 
-        [nlp, du_idx] = add_var(nlp, ['dU_', num2str(idx)], NU, du_guess, du_lb, du_ub, 'der_input');
+        [nlp, du_idx] = AddVar(nlp, ['dU_', num2str(idx)], NU, du_guess, du_lb, du_ub, 'der_input');
         grid_var.(['der_input_', num2str(idx)]) = du_idx;
 
     end

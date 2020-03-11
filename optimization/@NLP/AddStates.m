@@ -1,5 +1,4 @@
-% function [ q_k , dq_k , ddq_k , q_inds , dq_inds , ddq_inds , problem ] = add_states( nlp , problem , rbm , seed , q_inds , dq_inds , ddq_inds , idx )
-function [nlp, grid_var] = AddStates(nlp, rbm, grid_var)%, idxArg)
+function [nlp, grid_var] = AddStates(nlp, rbm, grid_var)
 
 
 arguments
@@ -29,9 +28,9 @@ for idx = 1:nlp.Settings.ncp
     ddq_guess = rbm.States.ddq.Seed(:, idx);
 
 
-    [nlp, q_idx]   = add_var(nlp, ['Q_', num2str(idx)]  , NB, q_guess  , q_lb  , q_ub  , 'pos');
-    [nlp, dq_idx]  = add_var(nlp, ['dQ_', num2str(idx)] , NB, dq_guess , dq_lb , dq_ub , 'vel');
-    [nlp, ddq_idx] = add_var(nlp, ['ddQ_', num2str(idx)], NB, ddq_guess, ddq_lb, ddq_ub, 'acc');
+    [nlp, q_idx]   = AddVar(nlp, ['Q_', num2str(idx)]  , NB, q_guess  , q_lb  , q_ub  , 'pos');
+    [nlp, dq_idx]  = AddVar(nlp, ['dQ_', num2str(idx)] , NB, dq_guess , dq_lb , dq_ub , 'vel');
+    [nlp, ddq_idx] = AddVar(nlp, ['ddQ_', num2str(idx)], NB, ddq_guess, ddq_lb, ddq_ub, 'acc');
 
 
     grid_var.(['pos_', num2str(idx)]) = q_idx;

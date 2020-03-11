@@ -14,7 +14,7 @@ tf_ub = nlp.Problem.FinalTime.UpperBound;
 
 
 % final time         
-[nlp, tf] = add_var(nlp, 'tf', 1, tf_guess, tf_lb, tf_ub, 'tf');
+[nlp, tf] = AddVar(nlp, 'tf', 1, tf_guess, tf_lb, tf_ub, 'tf');
 
 
 grid_var.tf = tf;

@@ -16,8 +16,8 @@ position2enforce = [3:7];
 velocity2enforce = [1:7];
 
 % % periodicity constraints
-% [problem] = Optim.add_constraint(problem, q_plus(3:7) - q_0(3:7) , -tol_per*ones(5,1), tol_per*ones(5,1) );
-% [problem] = Optim.add_constraint(problem, qd_plus - qd_0 , -tol_per*ones(NB,1), tol_per*ones(NB,1) );
+% [problem] = Optim.AddConstraint(problem, q_plus(3:7) - q_0(3:7) , -tol_per*ones(5,1), tol_per*ones(5,1) );
+% [problem] = Optim.AddConstraint(problem, qd_plus - qd_0 , -tol_per*ones(NB,1), tol_per*ones(NB,1) );
 % 
 
 

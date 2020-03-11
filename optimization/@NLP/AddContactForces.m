@@ -20,7 +20,7 @@ for i = 1:NC
         Fc_lb = rbm.Contacts{i}.Fc.LowerBound(:, idx);
         Fc_guess = rbm.Contacts{i}.Fc.Seed(:, idx);
 
-        [nlp, Fc_idx] = add_var(nlp, ['Fc', num2str(i), '_', num2str(idx)], NFc, Fc_guess, Fc_lb, Fc_ub, ['Fc', num2str(i)]);
+        [nlp, Fc_idx] = AddVar(nlp, ['Fc', num2str(i), '_', num2str(idx)], NFc, Fc_guess, Fc_lb, Fc_ub, ['Fc', num2str(i)]);
         grid_var.(['Fc', num2str(i),'_', num2str(idx)]) = Fc_idx;
 
         

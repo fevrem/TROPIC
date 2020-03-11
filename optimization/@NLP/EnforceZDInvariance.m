@@ -6,7 +6,6 @@ arguments
     obj (1,1) NLP
     rbm (1,1) DynamicalSystem
     grid_var (1,1) struct
-    %T (1,:) char {mustBeMember(T, {'t_minus','t_plus'})}
 end
 
 
@@ -46,7 +45,7 @@ if obj.Problem.Trajectory.Bool
                 ddy_i = obj.Functions.DDY_Controller(grid_var.(['pos_', num2str(i)]), grid_var.(['vel_', num2str(i)]), grid_var.(['acc_', num2str(i)]), a, tau_i, t_plus, t_minus);
 
                 % enforce ZD invariance
-                [obj] = add_constraint(obj, ddy_i + ctrl_gain^2*y_i + 2*ctrl_gain*dy_i, -obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), 'ZD invariance');
+                [obj] = AddConstraint(obj, ddy_i + ctrl_gain^2*y_i + 2*ctrl_gain*dy_i, -obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), 'ZD invariance');
 
 
             end

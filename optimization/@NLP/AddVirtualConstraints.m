@@ -1,10 +1,8 @@
-% function [casadi] = configure_functions( rbm , nlp )
 function [obj] = AddVirtualConstraints(obj, rbm, varargin)
 
 arguments
     obj (1,1) NLP
     rbm (1,1) DynamicalSystem
-    %contactD (1,1) ContactDynamics
 end
 
 arguments (Repeating)
@@ -46,12 +44,6 @@ end
 obj.Problem.Trajectory.PolyPhase = argIn.PolyPhase;
 
 
-%obj.Problem.Trajectory
-
-
-
-%fprintf('\n\t- desired trajectories: virtual constraints')
-
 
 import casadi.*
 
@@ -65,12 +57,6 @@ t_minus = SX.sym('phase_var_T');
 tau = SX.sym('norm_phase_var');
 
 
-% rffrfr
-% con.desired_trajectory.option = 'virtual-constraint';
-% con.desired_trajectory.type = 'bezier';
-% con.desired_trajectory.order = 5;
-% con.desired_trajectory.param = 'time-based';
-% 
 
 
 switch obj.Problem.Trajectory.PolyType

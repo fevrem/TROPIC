@@ -1,4 +1,4 @@
-function [options] = IPOPToptions(obj)% nlp )%, rbm )
+function [options] = IPOPToptions(obj)
 % I suggest changing the memory allocation based on the 
 % complexity/dimension of the mechanical system
 
@@ -8,7 +8,6 @@ end
 
 options = struct;
 
-% select the linear solver
 
 options.ipopt.mu_strategy = 'adaptive';
 options.ipopt.max_iter = 1000;
@@ -27,45 +26,24 @@ options.ipopt.limited_memory_update_type = 'bfgs';
 options.ipopt.limited_memory_max_history = 10;
 
 
-% switch nlp.Settings.linear_solver
-%     
-%     case 'mumps'
-%         
-%     case 'ma27'
-%         
-%     case 'ma57'
-%        
-%         switch rbm.dimensions
-% 
-%             case '3D'
-%                 options.ipopt.ma57_pre_alloc = 2;%3 % haven't found an example that required more than 3
-% 
-%         end
-% 
-% end
-
 
 %{
+
 
     ### Linear Solver ###
 
 Linear solver used for step computations.
       Determines which linear algebra package is to be used for the solution of
-      the augmented linear system (for obtaining the search directions). Note,
-      the code must have been compiled with the linear solver you want to
-      choose. Depending on your Ipopt installation, not all options are
-      available.
-    Possible values:
-     - ma27         [available]
-     - ma57         [available]
-     - pardiso      [x]
-     - wsmp         [x]
-     - mumps        [available]
-
-%}
+      the augmented linear system (for obtaining the search directions). N
 
 
-%{
+
+
+    COIN-OR documention 
+    https://www.coin-or.org/Bonmin/option_pages/options_list_ipopt.html
+
+
+
     
     ### MA27 ###
 
@@ -92,10 +70,7 @@ Linear solver used for step computations.
     have enough memory, the guesses are increased by some factor, and that factor is the 
     value of the option ma27_meminc_factor (default 10).
 
-%}
 
-
-%{
     
     ### MA57 ###
 
@@ -108,11 +83,6 @@ Linear solver used for step computations.
 
     --> I do not recommend changing other options
 
-%}
-
-
-
-%{ 
 
     ### Mumps ###
 
@@ -129,10 +99,6 @@ Linear solver used for step computations.
 %}
 
 
-%{
-    COIN-OR documention 
-    https://www.coin-or.org/Bonmin/option_pages/options_list_ipopt.html
-%}
 
 
 

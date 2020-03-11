@@ -1,19 +1,13 @@
-% function [casadi] = configure_functions( rbm , nlp )
 function [obj, rbm] = LoadConstraints(obj, rbm, varargin)
 
 arguments
     obj (1,1) NLP
     rbm (1,1) DynamicalSystem
-    %contactD (1,1) ContactDynamics
 end
 
 arguments (Repeating)
     varargin (1,2) cell
 end
-
-%
-%obj.Problem = ConstraintList();
-%
 
         
 
@@ -69,10 +63,6 @@ if obj.Problem.Trajectory.Bool
         
     end
 end
-
-
-
-
 
 
 

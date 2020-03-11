@@ -1,5 +1,5 @@
-% function [obj, var, var_inds] = add_var(obj, name, len, init, lb, ub, varargin)
-function [obj,var] = add_var(obj, name, len, init, lb, ub, varargin)
+% function [obj, var, var_inds] = AddVar(obj, name, len, init, lb, ub, varargin)
+function [obj,var] = AddVar(obj, name, len, init, lb, ub, varargin)
 
 
 if nargin == 7

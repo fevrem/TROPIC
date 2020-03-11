@@ -1,11 +1,9 @@
-% function [holonomic_constraints, variables, variable_names, hol_fun] = ConstrainedDynamics(rbm, contactD)%JcArg, dJcArg)
-function hol_fun = ConstrainedDynamics(nlp, rbm)%, contactD)%JcArg, dJcArg)
+function hol_fun = ConstrainedDynamics(nlp, rbm)
 
 
 arguments
     nlp (1,1) NLP
     rbm (1,1) DynamicalSystem
-    %contactD (1,1) ContactDynamics
 end
 
 
@@ -26,9 +24,7 @@ mustBePositive(nContact)
 
 holonomic_constraints = q(1)*[];
 
-%sumContactForces = q(1)*zeros(NB,1);
-%Fc_vars_sym = [];
-%Fc_vars_ID = {};
+
 for i = 1:nContact
 
     Jc = rbm.Contacts{i}.Jac_contact;
@@ -37,7 +33,6 @@ for i = 1:nContact
     
     holonomic_constraints = [holonomic_constraints; Jc*qdd + dJc*qd];
     
-
 end
 
 

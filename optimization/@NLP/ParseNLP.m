@@ -46,8 +46,6 @@ var_grid = struct();
 
 [obj] = SwingFootImpactVelocities(obj, rbm, var_grid);
 
-    
-var_grid
 
 
 %% Parse Trajectory
@@ -61,6 +59,7 @@ h = T/obj.Settings.nfe;
 % initialize the running cost
 running_cost = 0;
 
+% integrate over each finite element
 for idx_fe = 1:obj.Settings.nfe
     
     
@@ -83,7 +82,7 @@ for idx_fe = 1:obj.Settings.nfe
             f1 = var_grid.tf*[var_grid.(['vel_', num2str(idx1)]); var_grid.(['acc_', num2str(idx1)])];
             f2 = var_grid.tf*[var_grid.(['vel_', num2str(idx2)]); var_grid.(['acc_', num2str(idx2)])];
             
-            [obj] = add_constraint(obj, x2 - (x1 + 1/2*h*(f2 + f1)), -obj.Settings.ConstraintTolerance*ones(2*numel(rbm.States.q.sym),1), obj.Settings.ConstraintTolerance*ones(2*numel(rbm.States.q.sym),1), 'Trap');
+            [obj] = AddConstraint(obj, x2 - (x1 + 1/2*h*(f2 + f1)), -obj.Settings.ConstraintTolerance*ones(2*numel(rbm.States.q.sym),1), obj.Settings.ConstraintTolerance*ones(2*numel(rbm.States.q.sym),1), 'Trap');
 
 
             % enforce slew rate
@@ -95,7 +94,7 @@ for idx_fe = 1:obj.Settings.nfe
                 du1 = var_grid.tf*var_grid.(['der_input_', num2str(idx1)]);
                 du2 = var_grid.tf*var_grid.(['der_input_', num2str(idx2)]);
                 
-                [obj] = add_constraint(obj, u2 - (u1 + 1/2*h*(du2 + du1)), -obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), 'Slew rate (Int)');
+                [obj] = AddConstraint(obj, u2 - (u1 + 1/2*h*(du2 + du1)), -obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), 'Slew rate (Int)');
             
             end
             
@@ -130,10 +129,10 @@ for idx_fe = 1:obj.Settings.nfe
             
             
             % (4.3)                       
-            [obj] = add_constraint(obj, x3 - x1 - h/6*(f1 + 4*f2 + f3), -obj.Settings.ConstraintTolerance*ones(2*numel(rbm.States.q.sym),1), obj.Settings.ConstraintTolerance*ones(2*numel(rbm.States.q.sym),1), 'HermiteS (1)');
+            [obj] = AddConstraint(obj, x3 - x1 - h/6*(f1 + 4*f2 + f3), -obj.Settings.ConstraintTolerance*ones(2*numel(rbm.States.q.sym),1), obj.Settings.ConstraintTolerance*ones(2*numel(rbm.States.q.sym),1), 'HermiteS (1)');
             
             % (4.4)
-            [obj] = add_constraint(obj, x2 - 1/2*(x1 + x3) - h/8*(f1 - f3), -obj.Settings.ConstraintTolerance*ones(2*numel(rbm.States.q.sym),1), obj.Settings.ConstraintTolerance*ones(2*numel(rbm.States.q.sym),1), 'HermiteS (1)');     
+            [obj] = AddConstraint(obj, x2 - 1/2*(x1 + x3) - h/8*(f1 - f3), -obj.Settings.ConstraintTolerance*ones(2*numel(rbm.States.q.sym),1), obj.Settings.ConstraintTolerance*ones(2*numel(rbm.States.q.sym),1), 'HermiteS (1)');
 
             
             % integrate cost
@@ -156,10 +155,10 @@ for idx_fe = 1:obj.Settings.nfe
                 
             
                 % (4.3)                       
-                [obj] = add_constraint(obj, u3 - u1 - h/6*(du1 + 4*du2 + du3), -obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), 'Slew rate (Int1)');
+                [obj] = AddConstraint(obj, u3 - u1 - h/6*(du1 + 4*du2 + du3), -obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), 'Slew rate (Int1)');
             
                 % (4.4)
-                [obj] = add_constraint(obj, u2 - 1/2*(u1 + u3) - h/8*(du1 - du3), -obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), 'Slew rate (Int2)');     
+                [obj] = AddConstraint(obj, u2 - 1/2*(u1 + u3) - h/8*(du1 - du3), -obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), obj.Settings.ConstraintTolerance*ones(numel(rbm.Inputs.u.sym),1), 'Slew rate (Int2)');
 
             
             end
@@ -183,32 +182,6 @@ total_cost = Opt.FinalCost(rbm, running_cost, var_grid.tf, var_grid.(['pos_', nu
             
 % set NLP objective 
 obj.Cost = total_cost;
-
-
-return
-
-
-
-% integrate the finite element
-
-[obj, running_cost] = integrate_FE(obj, rbm, h, running_cost,...
-    cost, cost_previous,...
-    states, states_previous,...
-    control, control_previous,...
-    f_k, f_previous, {'idx',k} );
-
-
-if k == 1 % FROST- THIS IS USED TO MATCH FROST
-
-        obj = add_constraint(obj, rbm.model.h_RightToe_RightStance([states_previous.pos;states_previous.vel;states_previous.acc], pst_prev ) , -obj.Settings.constraint_tol*ones(2,1) , obj.Settings.constraint_tol*ones(2,1) , 'h_RightToe' );     
-        obj = add_constraint(obj, rbm.model.dh_RightToe_RightStance([states_previous.pos;states_previous.vel;states_previous.acc], pst_prev ) , -obj.Settings.constraint_tol*ones(2,1) , obj.Settings.constraint_tol*ones(2,1) , 'dh_RightToe' );     
-        obj = add_constraint(obj, rbm.model.ddh_RightToe_RightStance([states_previous.pos;states_previous.vel;states_previous.acc], pst_prev ) , -obj.Settings.constraint_tol*ones(2,1) , obj.Settings.constraint_tol*ones(2,1) , 'ddh_RightToe' );     
-
-end
-
-
-% enforce periodicity constraints
-[obj] = one_step_periodic(obj, rbm, states_0, states, {'idx',k} );
 
 
 

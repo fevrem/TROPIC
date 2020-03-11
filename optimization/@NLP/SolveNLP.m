@@ -1,4 +1,4 @@
-function [obj] = SolveNLP(obj)%, rbm)
+function [obj] = SolveNLP(obj)
 
 arguments
     obj (1,1) NLP
@@ -11,8 +11,7 @@ import casadi.*
 prob = struct('f', obj.Cost, 'x', vertcat(obj.Vars{:}), 'g', vertcat(obj.Constr{:}));
 
 % select the linear solver and sets options
-[options] = IPOPToptions(obj)%obj)%, rbm)
-
+[options] = IPOPToptions(obj);
 
 % send the nlp to ipopt
 solver = nlpsol('solver', 'ipopt', prob, options);

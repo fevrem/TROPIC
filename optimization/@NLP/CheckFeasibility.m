@@ -42,7 +42,6 @@ end
 if ~(nlp.Problem.FinalTime.UpperBound > data.t(end))
     warning('Initial guess: seed.tf > tf.UB')
 end
-%nlp.Problem.FinalTime.Function = data.t(end);
 nlp.Problem.FinalTime.Value = data.t(end);
 
 

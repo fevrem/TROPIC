@@ -4,8 +4,12 @@ clear all; clc; close all;
 rmpath(genpath(pwd))
 
 
+
+%%
+
 TOPIC_add_path
 
+%%
 
 cd('examples/spatial-12-dof-biped')
 
@@ -36,7 +40,7 @@ rbm.Contacts{1} = Contact(rbm, 'Point',...
 %     {'ContactFrame', rbm.BodyPositions{9,2}});
 
 
-%
+
 % CREATE EMPTY NLP
 
 %{
@@ -66,7 +70,7 @@ nlp = ConfigFunctions(nlp, rbm);
 nlp = AddVirtualConstraints(nlp, rbm,...
     {'PolyType', 'Bezier'},...
     {'PolyOrder', 5},...
-    {'PolyPhase', 'time-based'});
+    {'PolyPhase', 'state-based'});
 
 
 
