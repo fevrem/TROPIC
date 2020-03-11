@@ -118,7 +118,7 @@ clear body_appearance joint_appearance
 robot.parent(9) = 8;  
 robot.body_axis{9} = [0 0 -1];
 robot.body_length{9} = model_prms.L_lower_leg;
-robot.Xtree{9} = plux(eye(3), model_prms.L_upper_leg*robot.body_axis{9});
+robot.Xtree{9} = plux(eye(3), model_prms.L_upper_leg*robot.body_axis{8});
 robot.jtype{9}  = 'Ry';
 robot.I{9} = mcI(model_prms.M_lower_leg, model_prms.Lcom_lower_leg*robot.body_axis{9}, diag(1/12*model_prms.M_lower_leg*model_prms.L_lower_leg^2*[-1 -1 0]));
 body_appearance{1}.length = model_prms.L_lower_leg;
@@ -167,7 +167,7 @@ clear body_appearance joint_appearance
 robot.parent(12) = 11;    
 robot.body_axis{12} = [0 0 -1];
 robot.body_length{12} = model_prms.L_lower_leg;
-robot.Xtree{12} = plux(eye(3), model_prms.L_upper_leg*robot.body_axis{12});
+robot.Xtree{12} = plux(eye(3), model_prms.L_upper_leg*robot.body_axis{11});
 robot.jtype{12}  = 'Ry';
 robot.I{12} = mcI(model_prms.M_lower_leg, model_prms.Lcom_lower_leg*robot.body_axis{12}, diag(1/12*model_prms.M_lower_leg*model_prms.L_lower_leg^2*[-1 -1 0]));
 body_appearance{1}.length = model_prms.L_lower_leg;
