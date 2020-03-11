@@ -1,14 +1,4 @@
 function [H,C] = HandC(obj, sys)
-
-% arguments
-%     obj (1,1) {ContinuousDynamics,HybridDynamics}
-%     sys (1,1) {DynamicalSystem,HybridDynamicalSystem}
-% end
-
-
-
-
-
 % HandC  Calculate coefficients of equation of motion
 % [H,C]=HandC(model,q,qd,f_ext)  calculates the coefficients of the
 % joint-space equation of motion, tau=H(q)qdd+C(d,qd,f_ext), where q, qd
@@ -20,20 +10,7 @@ function [H,C] = HandC(obj, sys)
 % external forces acting on the bodies.  It can be omitted if there are no
 % external forces.  The format of f_ext is explained in the source code of
 % apply_external_forces.
-% 
-% if nargin == 4
-%     fprintf('\n==> Derive equations of motion in excess coordinates given by:')
-%     fprintf('\nH(q)qdd + C(q,qd) = B(q)u + J^T(q)F')
-%     fprintf('\nRNEA for C(q,qd) and CRBA for H(q)... ')
-%     tic
-% elseif nargin == 5
-%     fprintf('\n==> Derive equations of motion in minimal coordinates given by:')
-%     fprintf('\nHm(qm)qddm + Cm(qm,qdm) = Bm(qm)u')
-%     fprintf('\nRNEA for Cm(qm,qdm) and CRBA for Hm(qm)... ')
-%     tic
-% else
-%     error('Wrong number of arguments')
-% end
+
 
 
 model = sys.Model;

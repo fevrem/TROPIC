@@ -1,14 +1,6 @@
 function H = InertiaMatrix(obj, sys, q, S, Xup)
 
-% arguments
-%     obj (1,1) RobotMotion
-%     q (:,1) casadi.SX
-%     S
-%     Xup
-% end
-
 model = sys.Model;
-%q = model.q;
 
 IC = model.I; % composite inertia calculation
 
@@ -21,7 +13,6 @@ for i = nd:-1:1
     end
 end
 
-% Martin Fevre (2019)
 H = q(1)*0 + zeros(nd);
 for i = 1:nd
     fh = IC{i} * S{i};  

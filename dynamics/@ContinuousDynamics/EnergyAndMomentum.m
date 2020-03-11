@@ -1,12 +1,4 @@
-function [KE, PE, cm, vcm] = EnergyAndMomentum(obj, sys)%, q, qd)
-
-% arguments
-%     obj (1,1) RobotMotion
-%     q (:,1) casadi.SX
-%     qd (:,1) casadi.SX
-% end
-
-% this is a slightly modified version of SV2 from Featherston
+function [KE, PE, cm, vcm] = EnergyAndMomentum(obj, sys)
 
 % EnerMo  calculate energy, momentum and related quantities
 % EnerMo(robot,q,qd)  returns a structure containing the fields KE, PE,
@@ -79,15 +71,6 @@ KE = sum(KE);
 PE = - mass * dot(cm,g);
 vcm = h / mass;
 
-
-
-% obj.KE = KE;
-% obj.PE = PE;
-% 
-% %obj.p_jts = ret.Pjt;
-% 
-% obj.p_com = cm;
-% obj.v_com = vcm;
 
 
 end

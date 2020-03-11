@@ -1,32 +1,7 @@
 classdef Contact 
-    % A class with basic model descriptions and functionalities
-    % of the multi-link rigid-body robot platform.
-    %
-    % - Roy Featherstones. "Rigid Body Dynamics Algorithm". Springer, 2008.
-    % http://royfeatherstone.org/spatial/
-    %
-    % @author Ayonga Hereid @date 2016-09-26
-    % @new{1,0, ayonga, 2016-09-26} Migrated from old modelConfig class
-    %
-    % Copyright (c) 2016, AMBER Lab
-    % All right reserved.
-    %
-    % Redistribution and use in source and binary forms, with or without
-    % modification, are permitted only in compliance with the BSD 3-Clause
-    % license, see
-    % http://www.opensource.org/licenses/bsd-license.php
-    
-    
-    properties (Constant)
-        
-        
-    end
-    
-    
+
+
     properties (GetAccess = public, SetAccess = protected)
-        
-        % The robot model
-        %   type: struct
         
         
         ContactType
@@ -39,16 +14,12 @@ classdef Contact
         
         dJac_contact
         
-        %ContactForces
-        
-        %HybridDynamics
-        %ForceVector
         
         
         
     end
     
-    properties (Access = public)%(GetAccess = public, SetAccess = public)
+    properties (Access = public)
     
         Fc 
     
@@ -59,8 +30,7 @@ classdef Contact
     methods
         
         
-        function obj = Contact(rbm, contact_type, varargin)%, dynamics_type)%varargin )
-                        
+        function obj = Contact(rbm, contact_type, varargin)
             
             arguments
                 rbm (1,1) DynamicalSystem
@@ -124,10 +94,6 @@ classdef Contact
                         case 'spatial'
                             nF = 3;
                     end
-%                     nc = size(rbm.Contacts,2)
-% 
-%                     obj.Fc = Var(['Fc', num2str(nc+1)], 3);
-
 
                     obj.Fc = Var('Fc_', nF);                    
                     
@@ -154,13 +120,6 @@ classdef Contact
             end
             
 
-            
-            %[obj.ContactForces, obj.ForceVector] = computeContactForces(obj, rbm);
-            
-            
-            
-
-
         end
         
         
@@ -170,14 +129,7 @@ classdef Contact
     end
     
     
-    
-    methods %(Access = private)
-        
-        %[obj] = getContact(obj)
-          
-        %validateContact(obj, contacts) 
-        
-    end
+
     
 
 
