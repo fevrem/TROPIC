@@ -1,20 +1,8 @@
-% function obj = HomogeneousTransforms(obj)
 function T = HomogeneousTransforms(obj)
 
 arguments
     obj (1,1) DynamicalSystem
 end
-
-% References:
-% The descriptions of rigid body model is based on but not limited to
-% the following resrouces
-
-% - Roy Featherstones. "Rigid Body Dynamics Algorithm". Springer, 2008.
-% http://royfeatherstone.org/spatial/
-
-
-% modified - 09/12/2019, Martin Fevre
-
 
 model = obj.Model;
 
@@ -42,8 +30,5 @@ for i = 1:model.nd
     end
 
 end
-
-%obj.T = T;
-
   
 end

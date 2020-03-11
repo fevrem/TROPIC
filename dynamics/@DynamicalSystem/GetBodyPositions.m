@@ -10,8 +10,6 @@ nd = model.nd;
 
 T = obj.HTransforms; 
 
-
-% Martin Fevre (2019)
 for i = 1:nd
     
     T_i = T{i};
@@ -26,8 +24,6 @@ for i = 1:nd
     pos_body{i,2} = p_next(1:3);
     
 end
-
-
 
 
 end

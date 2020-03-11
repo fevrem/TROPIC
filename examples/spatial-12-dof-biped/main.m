@@ -2,6 +2,8 @@
 clear all; clc; close all;
 
 rmpath(genpath(pwd))
+
+
 TOPIC_add_path
 
 
@@ -50,7 +52,7 @@ rbm.Contacts{1} = Contact(rbm, 'Point',...
 %}
 
 nlp = NLP(rbm,...
-    {'NFE', 25},...
+    {'NFE', 3},...
     {'CollocationScheme', 'HermiteSimpson'},... %HermiteSimpson,Trapezoidal
     {'LinearSolver', 'mumps'},... %'ma57'},..
     {'ConstraintTolerance', 1E-4});

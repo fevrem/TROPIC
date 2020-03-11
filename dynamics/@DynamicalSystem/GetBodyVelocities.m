@@ -4,16 +4,11 @@ arguments
     obj (1,1) DynamicalSystem
 end
   
-
 import casadi.*
 
 model = obj.Model;
 nd = model.nd;
 
-% T = obj.HTransforms; 
-
-
-% Martin Fevre (2019)
 for i = 1:nd
     
     Jac_1 = jacobian(obj.BodyPositions{i,1}, obj.States.q.sym);

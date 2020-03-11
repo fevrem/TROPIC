@@ -1,32 +1,6 @@
 classdef DynamicalSystem < handle 
-    % A class with basic model descriptions and functionalities
-    % of the multi-link rigid-body robot platform.
-    %
-    % - Roy Featherstones. "Rigid Body Dynamics Algorithm". Springer, 2008.
-    % http://royfeatherstone.org/spatial/
-    %
-    % @author Ayonga Hereid @date 2016-09-26
-    % @new{1,0, ayonga, 2016-09-26} Migrated from old modelConfig class
-    %
-    % Copyright (c) 2016, AMBER Lab
-    % All right reserved.
-    %
-    % Redistribution and use in source and binary forms, with or without
-    % modification, are permitted only in compliance with the BSD 3-Clause
-    % license, see
-    % http://www.opensource.org/licenses/bsd-license.php
-    
-    
-    properties (Constant)
-        
-        
-    end
-    
     
     properties (GetAccess = public, SetAccess = protected)
-        
-        % The robot model
-        %   type: struct
         
         Dynamics
         
@@ -39,10 +13,6 @@ classdef DynamicalSystem < handle
         InputMap
         
         Gravity
-        
-%         Inputs
-%         
-%         States
    
         Model
         
@@ -61,21 +31,16 @@ classdef DynamicalSystem < handle
     end
     
     
-    
-    %% Public methods
+ 
     methods
         
-        
-        function obj = DynamicalSystem(model)%, dynamics_type)%varargin )
-                        
-            
+        function obj = DynamicalSystem(model)
+
             arguments
                 model (1,1) function_handle
             end
 
-            % call the superclass constructor
             robot_structure = model();
-            
             
             obj.Model = robot_structure;
             
@@ -99,20 +64,11 @@ classdef DynamicalSystem < handle
             obj.BodyVelocities = GetBodyVelocities(obj);
             
             obj.Dynamics = ContinuousDynamics(obj);
-            
-            
 
         end
-        
-        
-       
-        
         
     end
     
 
     
-  
-    
 end
-
