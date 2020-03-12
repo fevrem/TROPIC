@@ -1,28 +1,5 @@
 function h = mArrow3(p1,p2,varargin)
-%mArrow3 - plot a 3D arrow as patch object (cylinder+cone)
-%
-% syntax:   h = mArrow3(p1,p2)
-%           h = mArrow3(p1,p2,'propertyName',propertyValue,...)
-%
-% with:     p1:         starting point
-%           p2:         end point
-%           properties: 'color':      color according to MATLAB specification
-%                                     (see MATLAB help item 'ColorSpec')
-%                       'stemWidth':  width of the line
-%                       'tipWidth':   width of the cone                       
-%
-%           Additionally, you can specify any patch object properties. (For
-%           example, you can make the arrow semitransparent by using
-%           'facealpha'.)
-%                       
-% example1: h = mArrow3([0 0 0],[1 1 1])
-%           (Draws an arrow from [0 0 0] to [1 1 1] with default properties.)
-%
-% example2: h = mArrow3([0 0 0],[1 1 1],'color','red','stemWidth',0.02,'facealpha',0.5)
-%           (Draws a red semitransparent arrow with a stem width of 0.02 units.)
-%
-% hint:     use light to achieve 3D impression
-%
+
 
 propertyNames = {'edgeColor'};
 propertyValues = {'none'};    

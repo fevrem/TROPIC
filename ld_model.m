@@ -1,11 +1,6 @@
 function rbm = ld_model(varargin)
 
 %% Argument Validation
-% declare specific restrictions on function input arguments
-% arguments
-%     model_arg (1,2) cell
-% end
-
 arguments (Repeating)
     varargin (1,:) cell
 end

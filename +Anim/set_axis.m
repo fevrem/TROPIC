@@ -13,13 +13,7 @@ function [ax,lh] = set_axis( x0 , rbm , anim_options , ax , lh )
         ax.XLim = [mean(x) - max_axis/2, mean(x) + max_axis/2];
         ax.YLim = [mean(y) - max_axis/2, mean(y) + max_axis/2];
         ax.ZLim = [0, mean(z) + max_axis/2];
-        
-        
-        
-        % 3D
-%         ax.XLim = anim_options.axis.x;
-%         ax.YLim = anim_options.axis.y;
-%         ax.ZLim = anim_options.axis.z;
+       
 
         
     else
@@ -36,9 +30,6 @@ function [ax,lh] = set_axis( x0 , rbm , anim_options , ax , lh )
         end
         
         % 3D
-%         viewOpt.xRange = 1.5;
-%         viewOpt.yRange = 1.5;
-%         viewOpt.zRange = 1.5;      
         ax.XLim = xl;
         ax.YLim = yl;
         ax.ZLim = zl;

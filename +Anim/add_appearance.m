@@ -16,14 +16,7 @@ function body_appearance = add_appearance(body_type, body_prms, joint_prms, vara
 %   plot a sphere of radius joint_size at end of link
 
 %% Argument Validation
-% declare specific restrictions on function input arguments
-% arguments
-%     body_type (1,:) char
-%     body_length (1,1) double
-%     body_axis (1,3) double
-%     body_color (1,:) double
-%     joint_size (1,1) double
-% end
+
 arguments
     body_type (1,:) char {mustBeMember(body_type, {'base','joint','slender-rod','reaction-wheel'})}    
     body_prms (1,:) cell
@@ -50,79 +43,30 @@ switch body_type
         
     case 'slender-rod'
       
-        % validate then extract arguments
-        %body = extract_prms(body_type, body_prms);
-        
-        
-        
-%         body_appearance = {
-%             'colour', body.color,...
-%             'facets', 10,...
-%             'cyl', [zeros(1,3); body.length*body.axis], body.radius};
 
-        
-        
-body_appearance = {};
-if ~isempty(body_prms)
-    for i = 1:numel(body_prms)
-        body_i = body_prms{i};
-        
-               
-        % validate then extract arguments
-        body = extract_prms(body_type, body_i);
-
-        body_appearance = [body_appearance,...
-            'colour', body.color,...
-            'facets', 10,...
-            'cyl', [zeros(1,3); body.length*body.axis], body.radius];
-
-        
-        
-    end
-end
-        
+        body_appearance = {};
+        if ~isempty(body_prms)
+            for i = 1:numel(body_prms)
+                body_i = body_prms{i};
 
 
-% for i = 1:numel(joint_prms)
-%         joint_i = joint_prms{i};
-%         
-%         fd_names = fieldnames(joint_i);
-%         for k = 1:numel(fd_names)
-% 
-%            % verify argument
-%            validate_joint_prms(fd_names{k})
-% 
-%         end
-% 
-%         
-%         body_appearance = [body_appearance,...
-%             'colour', .2*ones(1,3),...
-%             'facets', 15,...
-%             'sphere', joint_i.distance*joint_i.axis, joint_i.radius];
-%      
-%         
-% end
-%     
-%         
-%         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                
-        
+                % validate then extract arguments
+                body = extract_prms(body_type, body_i);
+
+                body_appearance = [body_appearance,...
+                    'colour', body.color,...
+                    'facets', 10,...
+                    'cyl', [zeros(1,3); body.length*body.axis], body.radius];
+
+            end
+        end
+
+
         
     case 'reaction-wheel'
+        
+        error('Pull this from previous package')
+        
         
     otherwise 
         error('MyComponent:incorrectType',...
@@ -130,6 +74,9 @@ end
    
     
 end
+
+
+
 
 
 if ~isempty(joint_prms)
@@ -165,38 +112,10 @@ if debug_mode
         'colour', [0 0 1], 'cyl', [0 0 0; .1 0 0], .005, ...
         'colour', [0 1 0], 'cyl', [0 0 0; 0 .1 0], .005, ...
         'colour', [1 0 0], 'cyl', [0 0 0; 0 0 .1], .005];
-    
-        
-    
-    
+  
 end
     
-    
-
-
-
-
-                % for debugging
-%                 robot.appearance.body{i} = ...
-%                     {   
-%                         'colour',[0 0.9 0],...
-%                         'cyl', [0 0 -T/2; 0 0 T/2], l{i},...
-%                         'colour',[0 0 0],...
-%                         'cyl', [0 0 -T/3; 0 0 T/3], l{i}+l{i}/R2,...
-%                         'colour',[0 0 0],...
-%                         'box',[-l{i}/R2 -l{i}-200*l{i}/R2 -T/2-0.1*T ; l{i}/R2 0 T/2+0.1*T]
-%                     };
-                
-                
-            %case 'stance'
-            %    
-                
-                
-                
-
-
-            
-            
+  
 
 
 end

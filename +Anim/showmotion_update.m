@@ -1,4 +1,4 @@
-function  showmotion_update( RoBoDyn, t_data, q_data, anim_options)%varargin)% , scrollOpt,viewOpt,fig,ax)
+function  showmotion_update( RoBoDyn, t_data, q_data, anim_options)
 
 % SHOWMOTION  3D animation of a robot or other mechanical system
 % showmotion(model,t_data,q_data)  presents an interactive 3D animation of
@@ -49,13 +49,10 @@ if isfield(ShoMoData,'handles4')
     [ShoMoData.ax4,ShoMoData.lh4] = Anim.set_axis( q_data , RoBoDyn , anim_options , ShoMoData.ax4 , ShoMoData.lh4 );
 end
 
-% lh = light
-% lighting flat
+
 
 drawnow;
 
-% lh = light
-% lighting flat
 
 end					% because there are nested functions
 

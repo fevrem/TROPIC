@@ -1,6 +1,4 @@
 function [p,n]=numSubplots(n)
-% function [p,n]=numSubplots(n)
-%
 % Purpose
 % Calculate how many rows and columns of sub-plots are needed to
 % neatly display n subplots. 
