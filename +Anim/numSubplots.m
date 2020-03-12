@@ -48,7 +48,7 @@ end
 %square design 
 while p(2)/p(1)>2.5
     N=n+1;
-    [p,n]=Plt.numSubplots(N); %Recursive!
+    [p,n]=Anim.numSubplots(N); %Recursive!
 end
 
 end
