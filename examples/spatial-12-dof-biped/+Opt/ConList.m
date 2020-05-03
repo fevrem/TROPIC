@@ -48,8 +48,8 @@ obj.StepHeight.UpperBound = 0;
 % desired walking speed (m/s)
 obj.ForwardWalkingSpeed.Name = 'Walking speed';      
 obj.ForwardWalkingSpeed.Bool = true;
-obj.ForwardWalkingSpeed.LowerBound = 0.40;      
-obj.ForwardWalkingSpeed.UpperBound = 0.40;
+obj.ForwardWalkingSpeed.LowerBound = 0.20;      
+obj.ForwardWalkingSpeed.UpperBound = 0.20;
 
 
 % minimum velocity phase variable (rad/s or m/s)
