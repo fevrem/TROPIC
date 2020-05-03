@@ -38,6 +38,8 @@ classdef ConstraintList
         
         StanceFootInitialVelocity
         
+        TorsoAngles
+        
         OneStepPeriodic
         
         SwingFootVerticalImpactVelocity
