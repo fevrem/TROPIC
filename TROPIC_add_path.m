@@ -1,10 +1,10 @@
-function TOPIC_add_path()
-% TOPIC_add_path: add required path to CasADi
-%   - must run this from /TOPIC root at least once
+function TROPIC_add_path()
+% TROPIC_add_path: add required path to CasADi
+%   - must run this from /TROPIC root at least once
 %   - configured for CasADi v3.5.1 (released October 2019) 
 
 
-% make sure it's running from root (/TOPIC)
+% make sure it's running from root (/TROPIC)
 cur = fullfile(pwd);
 addpath(fullfile(cur));
 

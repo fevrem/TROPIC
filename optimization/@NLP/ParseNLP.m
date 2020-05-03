@@ -36,6 +36,8 @@ var_grid = struct();
 
 [obj] = FootHeight(obj, rbm, var_grid);
 
+[obj] = AbsTorsoAngles(obj, rbm, var_grid);
+
 [obj] = InitialConditions(obj, rbm, var_grid);
 
 [obj] = FinalConditions(obj, rbm, var_grid);
