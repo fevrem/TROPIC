@@ -1,5 +1,5 @@
 # TROPIC
-TRajectory Optimization Package In CasADi
+TRajectory OPtimization In CasADi
 
 03/12/2020: Added new 20-DOF biped robot (gait optimization on full-order dynamics).
 
