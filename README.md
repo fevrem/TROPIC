@@ -1,6 +1,6 @@
 # TROPIC
 
-![TROPIC](https://github.com/fevrem/TOPIC/blob/master/logo.pdf)
+![TROPIC](https://github.com/fevrem/TOPIC/blob/master/logo.png)
 
 TRajectory OPtimization In CasADi
 
