@@ -6,4 +6,3 @@
 
 
 ![Alt Text](https://github.com/fevrem/TOPIC/blob/master/examples/spatial-20-dof-biped/anim_biped_20_DOF.gif)
-
