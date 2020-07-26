@@ -7,10 +7,6 @@ robot.name = '20 DOF Biped';
 % number of DOF
 robot.nd = 20;
 
-warning('the body should be a uniform rectangle, not a slender rod')
-
-warning('add head for 1 DOF')
-warning('and constraint it')
 
 % geometric and inertial parameters
 model_prms = Model.model_params();
