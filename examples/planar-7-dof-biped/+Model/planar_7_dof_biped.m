@@ -50,6 +50,8 @@ robot.body_length{3} = model_prms.L_torso;
 robot.Xtree{3} = eye(6);
 robot.jtype{3}  = 'Ry';
 robot.I{3} = mcI(model_prms.M_torso, model_prms.Lcom_torso*robot.body_axis{3}, diag(1/12*model_prms.M_torso*model_prms.L_torso^2*[1 1 0])); % torso
+
+
 body_appearance{1}.length = model_prms.L_torso;
 body_appearance{1}.axis = robot.body_axis{3};
 body_appearance{1}.color = model_prms.C_torso;
