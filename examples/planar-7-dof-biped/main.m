@@ -61,8 +61,10 @@ data = ExtractData(nlp, rbm);
 
 %% ANIMATE SOLUTION
 
-qAnim = data.pos;
-tAnim = data.t;
+%qAnim = data.pos;
+%tAnim = data.t;
+tAnim = seed.t;
+qAnim = seed.q;
 
 % options: true or false 
 anim_options.bool = true;
@@ -87,6 +89,7 @@ anim_options.lights = true;
 
 % can pass figure as 5th argument
 Anim.animate(rbm, tAnim, qAnim, anim_options)
+%Anim.animate(rbm, seed.t, seed.q, anim_options)
 %set(gcf,'menubar','figure')
 %set(gcf,'menubar','none')
 
