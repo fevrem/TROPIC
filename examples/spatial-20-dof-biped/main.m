@@ -136,7 +136,7 @@ anim_options.axis.z = [0 1.5];
 anim_options.skip_frame = 1;
 
 % views to show. Options: {'3D','frontal','sagittal','top'}
-anim_options.views = {'3D','frontal','sagittal','top'};
+anim_options.views = {'3D'};%','frontal','sagittal','top'};
 
 
 % save options
