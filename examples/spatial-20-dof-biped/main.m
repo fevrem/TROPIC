@@ -1,11 +1,13 @@
 %% LOAD DYNAMICAL SYSTEM
 
-clear all; clc; close all; %#ok<CLALL>
+clear; clc;
 
+tic
 [rbm] = ld_model(...
     {'model',@Model.spatial_20_dof_biped},...
     {'debug',false});
- 
+toc
+
 
 %% SPECIFY CONTACT 
 
@@ -27,13 +29,11 @@ rbm.Contacts{1} = Contact(rbm, 'Point',...
 - CollocationScheme:
     options: 'HermiteSimpson', 'Trapezoidal'
 %}
-
 nlp = NLP(rbm,...
     {'NFE', 25},...
     {'CollocationScheme', 'HermiteSimpson'},...
     {'LinearSolver', 'mumps'},...
     {'ConstraintTolerance', 1E-4});
-
 
 % Create functions for dynamics equations 
 nlp = ConfigFunctions(nlp, rbm);
@@ -55,12 +55,18 @@ nlp = AddVirtualConstraints(nlp, rbm,...
 %% LOAD SEED
 
 %[nlp, rbm] = LoadSeed(nlp, rbm);
-[nlp, rbm] = LoadSeed(nlp, rbm, 'spatial-20-dof-biped-seed.mat');
+[nlp, rbm] = LoadSeed(nlp, rbm,...
+    'spatial-20-dof-biped-seed.mat');
  
 
-%% FILL UP & SOLVE THE NLP
+%% TRANSCRIPTION
 
+tic
 nlp = ParseNLP(nlp, rbm);
+toc
+
+
+%% SOLVE NLP
 
 nlp = SolveNLP(nlp);
 
