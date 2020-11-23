@@ -1,8 +1,6 @@
 classdef Contact 
 
-
     properties (GetAccess = public, SetAccess = protected)
-        
         
         ContactType
         
@@ -13,9 +11,6 @@ classdef Contact
         Jac_contact
         
         dJac_contact
-        
-        
-        
         
     end
     
@@ -28,7 +23,6 @@ classdef Contact
     
     %% Public methods
     methods
-        
         
         function obj = Contact(rbm, contact_type, varargin)
             
@@ -44,13 +38,12 @@ classdef Contact
             
                 argVar = varargin{i};
                 mustBeMember(argVar{1}, {'ContactFrame','Friction','FrictionType','FrictionCoefficient'})
-                
                 contactArg.(argVar{1}) = argVar{2};
-                
                 
             end
             
             
+        
             if isfield(contactArg, 'Friction')
   
                 if ~islogical(contactArg.Friction)
@@ -77,13 +70,10 @@ classdef Contact
                         error('FrictionCoefficient is a required argument for contacts with friction.')
                     end
                 end
-                
-                
+
             else
                 error('Friction (logical) is a required argument of Contact');
             end
-            
-
 
             switch contact_type
                 case 'Point'
@@ -99,8 +89,6 @@ classdef Contact
                     
                     obj.Fc.ID = 'cForce'; % same ID for all contact forces because fixed number for each phase
                     obj.ContactType = 'Point';
-                    
-                    obj.Fc
                                 
                     if ~isfield(contactArg, 'ContactFrame')
                         error('ContactFrame is a required argument for point contacts.')
@@ -116,24 +104,11 @@ classdef Contact
                     obj.ContactType = 'Plane';
                     error('Not supported yet')
                 
-                    
             end
             
-
         end
-        
-        
-       
-        
         
     end
     
     
-
-    
-
-
-  
-    
 end
-
