@@ -7,7 +7,6 @@ arguments
 end
 
 
-
 switch rbm.Model.dimensions
     case 'planar'
         if size(frame,1) ~= 2
@@ -19,16 +18,12 @@ switch rbm.Model.dimensions
         end
 end
 
-
 %validatePointContact(obj, contacts)
 
 q = rbm.States.q.sym;
 dq = rbm.States.dq.sym;
 
-
 obj.ContactFrame = frame;
-
-
 
 Jc = jacobian(frame, q);
 obj.Jac_contact = Jc;
@@ -38,8 +33,3 @@ obj.dJac_contact = dJc;
 
 
 end
-
-    
-
-
-
