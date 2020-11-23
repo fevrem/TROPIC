@@ -20,5 +20,6 @@
 11/23/2020: Adding reaction wheel system (RWS) or *flywheel* to planar five-link biped model.
 
 
-![Alt Text](https://github.com/fevrem/TOPIC/blob/master/examples/planar-8-dof-biped-flywheel/planar-8-dof-biped-flywheel.gif)
+
+![Alt Text](https://github.com/fevrem/TOPIC/blob/master/examples/planar-8-dof-biped-flywheel/planar-8dof-biped-flywheel.gif)
 
