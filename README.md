@@ -15,14 +15,14 @@ To cite TROPIC, we suggest the following citation:
 
 - [x] Add 20-DOF spatial biped robot 
 
-Gait optimization on full-order dynamics:
-
-    <img src="examples/spatial-20-dof-biped/anim_biped_20_DOF.gif" width="600">
+      Gait optimization on full-order dynamics: 
+      
+      <img src="examples/spatial-20-dof-biped/anim_biped_20_DOF.gif" width="600">
 
 
 - [x] Add reaction wheel system (RWS) or *flywheel* to planar five-link biped model
 
-    <img src="examples/planar-8-dof-biped-flywheel/planar-8dof-biped-flywheel.gif" width="400">
+      <img src="examples/planar-8-dof-biped-flywheel/planar-8dof-biped-flywheel.gif" width="400">
 
 
 - [ ] Add flat feet
