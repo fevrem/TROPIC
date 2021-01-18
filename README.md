@@ -5,9 +5,7 @@ To cite TROPIC, we suggest the following citation:
 
 [[Link]](https://github.com/fevrem/TROPIC/blob/master/MF_PMW_JPS_IROS2020_TROPIC.pdf) M. Fevre, P. M. Wensing, and J. P. Schmiedeler, "Rapid Bipedal Gait Optimization in CasADi", in Proc. IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2020, pp. 3672-3678.
 
-<img src="images/logo.png" width="200">
-
-## TRajectory OPtimization In CasADi
+<img src="images/logo.png" width="200"> ## TRajectory OPtimization In CasADi
 
 03/12/2020: Added new 20-DOF biped robot (gait optimization on full-order dynamics).
 
