@@ -9,11 +9,15 @@ To cite TROPIC, we suggest the following citation:
 
 <img src="images/logo.png" width="300"> 
 
-03/12/2020: Added new 20-DOF biped robot (gait optimization on full-order dynamics).
+### TODO
+
+- [ ] Add 20-DOF spatial biped robot 
+
+(gait optimization on full-order dynamics).
 
 <img src="examples/spatial-20-dof-biped/anim_biped_20_DOF.gif" width="800">
 
 
-11/23/2020: Adding reaction wheel system (RWS) or *flywheel* to planar five-link biped model.
+- [ ] Add reaction wheel system (RWS) or *flywheel* to planar five-link biped model
 
 ![Alt Text](https://github.com/fevrem/TROPIC/blob/master/examples/planar-8-dof-biped-flywheel/planar-8dof-biped-flywheel.gif)
