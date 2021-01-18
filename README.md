@@ -1,4 +1,6 @@
 
+<img src="images/logo.png" width="300"> 
+
 ## Citation
 
 To cite TROPIC, we suggest the following citation:
@@ -6,9 +8,12 @@ To cite TROPIC, we suggest the following citation:
 [[Link]](https://github.com/fevrem/TROPIC/blob/master/MF_PMW_JPS_IROS2020_TROPIC.pdf) M. Fevre, P. M. Wensing, and J. P. Schmiedeler, "Rapid Bipedal Gait Optimization in CasADi", in Proc. IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2020, pp. 3672-3678.
 
 
-## TRajectory OPtimization In CasADi
+## Get Started
 
-<img src="images/logo.png" width="300"> 
+Follow these steps to run the 12-DOF spatial biped example:
+
+- Run `TROPIC_add_path()` from the Matlab command line in the main TROPIC directory. 
+
 
 
 ## TODO
