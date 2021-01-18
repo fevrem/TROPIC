@@ -1,3 +1,5 @@
 .DS_Store
 .m~
 examples/ernie-model/*
+examples/double-pendulum-ooplane-flywheel/*
+examples/planar-2-link-biped/*
