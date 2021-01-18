@@ -5,9 +5,7 @@ To cite TROPIC, we suggest the following citation:
 
 [[Link]](https://github.com/fevrem/TROPIC/blob/master/MF_PMW_JPS_IROS2020_TROPIC.pdf) M. Fevre, P. M. Wensing, and J. P. Schmiedeler, "Rapid Bipedal Gait Optimization in CasADi", in Proc. IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2020, pp. 3672-3678.
 
-![TROPIC](images/logo.png)
-
-![TROPIC](https://github.com/fevrem/TROPIC/blob/master/images/logo.png)
+<img src="images/logo.png" width="200">
 
 ## TRajectory OPtimization In CasADi
 
