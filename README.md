@@ -13,7 +13,8 @@ To cite TROPIC, we suggest the following citation:
 Follow these steps to run the 12-DOF spatial biped example:
 
 - Run `TROPIC_add_path()` from the Matlab command line in the main TROPIC directory. 
-
+- Go to `examples/spatial-12-dof-biped/` and open `main.m`
+- Run `main.m` (this will overwrite the seed file with the newly optimized gait), or run each section and stop after the animation.
 
 
 ## TODO

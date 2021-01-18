@@ -57,9 +57,12 @@ nlp = AddVirtualConstraints(nlp, rbm,...
 [nlp, rbm] = LoadSeed(nlp, rbm, 'spatial-12-dof-seed.mat');
  
 
-%% PARSE & SOLVE THE NLP
+%% PARSE NLP
 
 nlp = ParseNLP(nlp, rbm);
+
+
+%% SOLVE NLP
 
 nlp = SolveNLP(nlp);
 
