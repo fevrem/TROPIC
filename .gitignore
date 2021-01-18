@@ -3,3 +3,4 @@
 examples/ernie-model/*
 examples/double-pendulum-ooplane-flywheel/*
 examples/planar-2-link-biped/*
+examples/planar-2-link-biped-flywheel/*
