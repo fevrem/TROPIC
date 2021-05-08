@@ -24,4 +24,7 @@ Anim.mArrow3(origin_arrow,origin_arrow+[0,0,Larrow],'color','r','stemWidth',Larr
 
 end
 
+function rng = range(inp)
+  rng = max(inp)-min(inp);
+end
 

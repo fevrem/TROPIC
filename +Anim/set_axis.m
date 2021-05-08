@@ -45,4 +45,10 @@ function [ax,lh] = set_axis( x0 , rbm , anim_options , ax , lh )
     end
         
         
- end
+end
+ 
+function rng = range(inp)
+  rng = max(inp)-min(inp);
+end
+
+
