@@ -34,7 +34,7 @@ ShoMoData.fig = fig;
 [interpreter,linewidth,fontname,fontsize] = Anim.plt_settings();
 
     
-ShoMoData.sup = suptitle(['t = ',num2str(t_data,'%.2f'),' s']);
+ShoMoData.sup = sgtitle(['t = ',num2str(t_data,'%.2f'),' s']);
 ShoMoData.sup.FontSize = fontsize;
 ShoMoData.sup.FontName = fontname;
 ShoMoData.sup.FontWeight = 'bold';
