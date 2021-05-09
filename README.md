@@ -31,11 +31,6 @@ Follow these steps to run the 12-DOF spatial biped example:
 - [ ] Add "get started" explanations
 
 
-## Contributing to TROPIC
-
-If you have improvements to TROPIC, send me a pull request!
-First, fork TROPIC’s repository into your own GitHub account and then push your changes into a branch on your fork. Once you believe your code is ready to be merged into TROPIC’s primary repository, open a pull request via the GitHub website. Your code will then undergo a review process and Continuous Integration (CI) tests before it is merged into TROPIC's primary repository.
-
 ## Credits
 
 TROPIC was started by Martin Fevre in the Locomotion & Biomechanics Lab at the University of Notre Dame. Other people have since contributed and helped make TROPIC successful. Here’s a list of contributors:
