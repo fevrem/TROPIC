@@ -1,10 +1,16 @@
-language: matlab #matlab: R2020a
+language: matlab 
 jobs:
   include:
     - os: linux
       dist: bionic
+      matlab: R2019b    
+    - os: linux
+      dist: bionic
       matlab: R2020a
-    - os: osx
-      osx_image: xcode12.4
-      matlab: R2020a
+    - os: linux
+      dist: focal
+      matlab: R2020b    
+    - os: linux
+      dist: focal
+      matlab: R2021a
 script: matlab -batch 'disp("Hello World");'
