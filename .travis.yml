@@ -1,8 +1,12 @@
 language: matlab 
+
 jobs:
   include:
     - os: linux
-      dist: bionic
+      dist: trusty
+      matlab: R2019b    
+    - os: linux
+      dist: xenial
       matlab: R2019b    
     - os: linux
       dist: bionic
@@ -13,4 +17,7 @@ jobs:
     - os: linux
       dist: focal
       matlab: R2021a
+
+compiler: gcc
+
 script: matlab -batch 'disp("Hello World");'
