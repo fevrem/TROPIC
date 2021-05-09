@@ -1,0 +1,3 @@
+language: matlab
+matlab: R2019b
+script: matlab -batch 'disp("Hello World");'
