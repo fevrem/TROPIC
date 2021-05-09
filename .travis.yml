@@ -3,21 +3,14 @@ language: matlab
 jobs:
   include:
     - os: linux
-      dist: trusty
-      matlab: R2019b    
-    - os: linux
-      dist: xenial
-      matlab: R2019b    
-    - os: linux
       dist: bionic
       matlab: R2020a
     - os: linux
       dist: focal
       matlab: R2020b    
-    - os: linux
-      dist: focal
-      matlab: R2021a
 
 compiler: gcc
 
-script: matlab -batch 'disp("Hello World");'
+script: 
+  - matlab -batch 'disp("Hello World");'
+  - matlab -batch 'TROPIC_add_path();'
