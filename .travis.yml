@@ -13,4 +13,4 @@ compiler: gcc
 
 script: 
   - matlab -batch 'TROPIC_add_path();'
-  - matlab -batch 'cd examples/planar-7-dof-biped/, main;'
+  - matlab -batch 'cd examples/spatial-12-dof-biped/, main;'
