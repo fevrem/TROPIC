@@ -4,10 +4,7 @@ jobs:
   include:
     - os: linux
       dist: bionic
-      matlab: R2020a
-    - os: linux
-      dist: focal
-      matlab: R2020b    
+      matlab: R2020a   
 
 compiler: gcc
 
