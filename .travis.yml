@@ -12,5 +12,5 @@ jobs:
 compiler: gcc
 
 script: 
-  - matlab -batch 'disp("Hello World");'
   - matlab -batch 'TROPIC_add_path();'
+  - matlab -batch 'cd examples/planar-7-dof-biped/, main;'
