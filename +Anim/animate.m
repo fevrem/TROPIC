@@ -12,11 +12,11 @@ if anim_options.bool
    
     if length(t) == 1
         Anim.showmotion_setup(RoBoDyn,t,q,fig1,anim_options); 
-        waitforbuttonpress;
+        %waitforbuttonpress;
     else
 
         Anim.showmotion_setup(RoBoDyn,t(1),q(:,1),fig1,anim_options)
-        waitforbuttonpress;
+        %waitforbuttonpress;
 
         if anim_options.save_movie
             v = VideoWriter(anim_options.movie_name,'MPEG-4');

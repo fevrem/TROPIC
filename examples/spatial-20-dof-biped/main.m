@@ -88,8 +88,9 @@ seed.u = data.input;
 
 % can be used as seed
 str2save = 'spatial-20-dof-biped-seed.mat';
-save(str2save, 'seed')
-
+if false
+    save(str2save, 'seed')
+end
 
 %% ANIMATE SOLUTION
 
