@@ -61,10 +61,10 @@ data = ExtractData(nlp, rbm);
 
 %% ANIMATE SOLUTION
 
-%qAnim = data.pos;
-%tAnim = data.t;
-tAnim = seed.t;
-qAnim = seed.q;
+qAnim = data.pos;
+tAnim = data.t;
+%tAnim = seed.t;
+%qAnim = seed.q;
 
 % options: true or false 
 anim_options.bool = true;
@@ -107,5 +107,6 @@ seed.u = data.input;
 
 % can be used as seed
 str2save = 'planar-7-dof-seed.mat';
-save(str2save, 'seed')
-
+if false
+    save(str2save, 'seed')
+end
