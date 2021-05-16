@@ -1,0 +1,14 @@
+language: matlab 
+
+jobs:
+  include:
+    - os: linux
+      dist: bionic
+      matlab: R2020a   
+
+compiler: gcc
+
+script: 
+  - matlab -batch 'TROPIC_add_path(), cd examples/planar-7-dof-biped/, main;'
+  - matlab -batch 'TROPIC_add_path(), cd examples/spatial-12-dof-biped/, main;'
+  - matlab -batch 'TROPIC_add_path(), cd examples/spatial-20-dof-biped/, main;'
